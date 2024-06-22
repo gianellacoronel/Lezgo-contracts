@@ -1,10 +1,10 @@
 #![no_std]
 
-use gstd::{ActorId, async_main, collections::HashMap, msg, prelude::*};
+use gstd::{ActorId, async_main, msg, prelude::*};
 
 use io::*;
 
-const ZERO_ID: ActorId = ActorId::zero()// 1. Create the main state as a static variable.
+const ZERO_ID: ActorId = ActorId::zero();
 static mut STATE: Option<Concert> = None;
 
 // Create a public State
