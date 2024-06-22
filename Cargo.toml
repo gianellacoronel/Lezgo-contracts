@@ -28,4 +28,7 @@ primitive-types = { version = "0.12", default-features = false }
 gmeta = { git = "https://github.com/gear-tech/gear", tag = "v1.4.0" }
 scale-info = { version = "2", default-features = false }
 parity-scale-codec = { version = "3", default-features = false }
+gtest = { git = "https://github.com/gear-tech/gear", tag = "v1.1.0" }
+gclient = "1.1.0"
 io.path = "io"
+tokio = "1"

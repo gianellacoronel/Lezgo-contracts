@@ -1,8 +1,10 @@
 #![no_std]
-use gstd::{async_main, collections::HashMap, msg, prelude::*, ActorId};
+
+use gstd::{ActorId, async_main, collections::HashMap, msg, prelude::*};
+
 use io::*;
 
-// 1. Create the main state as a static variable.
+const ZERO_ID: ActorId = ActorId::zero()// 1. Create the main state as a static variable.
 static mut STATE: Option<Concert> = None;
 
 // Create a public State
@@ -99,7 +101,7 @@ extern "C" fn state() {
     let state = unsafe { STATE.take().expect("Unexpected error in taking state") };
     let query: ConcertQuery = msg::load().expect("Unable to load the state query");
     let reply = match query {
-        ConcertQuery::ReplyDefault => ConcertQueryReply::ReplyDefault(state.name),
+        ConcertQuery::ConcertName => ConcertQueryReply::ConcertName(state.name),
     };
     msg::reply(reply, 0).expect("Error on state");
 }

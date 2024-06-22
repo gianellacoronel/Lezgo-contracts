@@ -1,7 +1,7 @@
 #![no_std]
 
 use gmeta::{In, InOut, Metadata, Out};
-use gstd::{prelude::*, ActorId};
+use gstd::{ActorId, prelude::*};
 
 pub struct ProgramMetadata;
 
@@ -89,7 +89,14 @@ pub enum ConcertEvents {
 #[derive(Debug, Decode, Encode, TypeInfo)]
 #[codec(crate = gstd::codec)]
 #[scale_info(crate = gstd::scale_info)]
-pub enum ConcertErrors {}
+pub enum ConcertErrors {
+    AlreadyRegistered,
+    ZeroAddress,
+    LessThanOneTicket,
+    NotEnoughTickets,
+    NotEnoughMetadata,
+    NotCreator,
+}
 
 // 6. Create your own Struct
 #[derive(Debug, Decode, Encode, TypeInfo)]
@@ -112,12 +119,12 @@ pub enum CustomStates {
 #[codec(crate = gstd::codec)]
 #[scale_info(crate = gstd::scale_info)]
 pub enum ConcertQuery {
-    ReplyDefault,
+    ConcertName,
 }
 
 #[derive(Encode, Decode, TypeInfo)]
 #[codec(crate = gstd::codec)]
 #[scale_info(crate = gstd::scale_info)]
 pub enum ConcertQueryReply {
-    ReplyDefault(String),
+    ConcertName(String),
 }
