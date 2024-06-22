@@ -9,8 +9,8 @@ pub struct ProgramMetadata;
 impl Metadata for ProgramMetadata {
     type Init = In<InitStruct>;
     type Handle = InOut<ConcertActions, Result<ConcertEvents, ConcertErrors>>;
-    type Others = ();
     type Reply = ();
+    type Others = ();
     type Signal = ();
     type State = InOut<ConcertQuery, ConcertQueryReply>;
 }
@@ -33,6 +33,7 @@ pub struct CreateConcertProps {
     pub description: String,
     pub number_of_tickets: u128,
     pub token_id: u128,
+    pub date: u128,
 }
 
 #[derive(Debug, Decode, Encode, TypeInfo)]

@@ -1,21 +1,26 @@
 #![no_std]
 
+use concert_io::*;
 use gstd::{ActorId, async_main, msg, prelude::*};
-
-use io::*;
+use multi_token_io::{BalanceReply, MtkAction, MtkEvent, TokenId, TokenMetadata};
 
 const ZERO_ID: ActorId = ActorId::zero();
+const NFT_COUNT: u128 = 1;
 static mut STATE: Option<Concert> = None;
 
 // Create a public State
 #[derive(Clone, Default)]
 pub struct Concert {
+    pub owner_id: ActorId,
     pub name: String,
     pub description: String,
     pub number_of_tickets: u128,
     pub creator: ActorId,
-    pub owner_id: ActorId,
+    pub date: u128,
     pub concert_id: u128,
+    pub id_counter: u128,
+    pub tickets_left: u128,
+    pub buyers: HashSet<ActorId>,
 }
 
 // Create a implementation on State
@@ -30,6 +35,9 @@ impl Concert {
 
         // Change State
         self.name = input.name;
+        self.creator = input.creator;
+        self.date = input.date;
+        self.number_of_tickets = input.number_of_tickets;
 
         Ok(ConcertEvents::Creation {
             creator: self.creator,
