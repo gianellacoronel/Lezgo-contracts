@@ -594,17 +594,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "builder-template"
-version = "0.1.3"
-dependencies = [
- "gear-wasm-builder",
- "gstd",
- "io",
- "parity-scale-codec",
- "scale-info",
-]
-
-[[package]]
 name = "bumpalo"
 version = "3.16.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -775,6 +764,31 @@ checksum = "cbf2150cce219b664a8a70df7a1f933836724b503f8a413af9365b4dcc4d90b8"
 dependencies = [
  "lazy_static",
  "windows-sys 0.48.0",
+]
+
+[[package]]
+name = "concert"
+version = "0.1.3"
+dependencies = [
+ "concert-io",
+ "gclient",
+ "gear-wasm-builder",
+ "gstd",
+ "gtest",
+ "multi-token",
+ "multi-token-io",
+ "tokio",
+]
+
+[[package]]
+name = "concert-io"
+version = "0.1.3"
+dependencies = [
+ "gmeta",
+ "gstd",
+ "parity-scale-codec",
+ "primitive-types",
+ "scale-info",
 ]
 
 [[package]]
@@ -2956,17 +2970,6 @@ name = "intx"
 version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f6f38a50a899dc47a6d0ed5508e7f601a2e34c3a85303514b5d137f3c10a0c75"
-
-[[package]]
-name = "io"
-version = "0.1.3"
-dependencies = [
- "gmeta",
- "gstd",
- "parity-scale-codec",
- "primitive-types",
- "scale-info",
-]
 
 [[package]]
 name = "io-lifetimes"
